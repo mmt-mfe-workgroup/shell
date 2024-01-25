@@ -4,13 +4,15 @@
   font-weight: 400;
 
   color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
+  /* color: rgba(255, 255, 255, 0.87); */
+  background-color: #fcfcfc;
 
   --team-shell-color:#646cff;
   --team-header-color: #ba3448;
   --team-catalogue-color:#ffef64;
   --team-basket-color:#64ffe5;
+
+  --team-align-color: #999;
   
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -29,9 +31,9 @@ body {
 }
 
 #title {
-  border-top: .125em dashed var(--team-shell-color);
-  border-left: .125em dashed var(--team-shell-color);
-  border-right: .125em dashed var(--team-shell-color);
+  border-top: .25em dashed var(--team-align-color);
+  border-left: .25em dashed var(--team-align-color);
+  border-right: .25em dashed var(--team-align-color);
   margin: .5em;
 }
 
@@ -40,22 +42,22 @@ main {
 }
 
 #header {
-  border-top: .125em dashed var(--team-header-color);
-  border-left: .125em dashed var(--team-header-color);
-  border-right: .125em dashed var(--team-header-color);
+  border-top: .25em dashed var(--team-align-color);
+  border-left: .25em dashed var(--team-align-color);
+  border-right: .25em dashed var(--team-align-color);
 }
 #catalogue {
   overflow-y: scroll;
   flex: 0.5;
-  border-top: .125em dashed var(--team-catalogue-color);
-  border-left: .125em dashed var(--team-catalogue-color);
-  border-right: .125em dashed var(--team-catalogue-color);
+  border-top: .25em dashed var(--team-align-color);
+  border-left: .25em dashed var(--team-align-color);
+  border-right: .25em dashed var(--team-align-color);
 }
 #basket {
   flex: 0.5;
-  border-top: .125em dashed var(--team-basket-color);
-  border-left: .125em dashed var(--team-basket-color);
-  border-right: .125em dashed var(--team-basket-color);
+  border-top: .25em dashed var(--team-align-color);
+  border-left: .25em dashed var(--team-align-color);
+  border-right: .25em dashed var(--team-align-color);
 }
 
 .shell {
@@ -86,7 +88,9 @@ body {
 }
 
 h1 {
-  font-size: 3.2em;
+  text-align: center;
+  font-weight: bold;
+  font-size: 2.2em;
   line-height: 1.1;
 }
 
