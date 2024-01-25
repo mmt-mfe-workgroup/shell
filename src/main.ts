@@ -1,7 +1,7 @@
 // @ts-nocheck
 import './style.css'
 
-const header:any = () => import("Header/App");
+const header:any = () => import("header/Header");
 const catalogue:any = () => import("catalogue/App");
 const basket:any = () => import("basket/App");
 
