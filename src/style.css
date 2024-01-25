@@ -1,0 +1,92 @@
+:root {
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+  color-scheme: light dark;
+  color: rgba(255, 255, 255, 0.87);
+  background-color: #242424;
+
+  --team-shell-color:#646cff;
+  --team-header-color: #ba3448;
+  --team-catalogue-color:#ffef64;
+  --team-basket-color:#64ffe5;
+  
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+* {
+  min-width: 0;
+  box-sizing: border-box;
+}
+
+body {
+  width: 100%;
+  overflow-x: hidden;
+}
+
+#title {
+  border-top: .125em dashed var(--team-shell-color);
+  border-left: .125em dashed var(--team-shell-color);
+  border-right: .125em dashed var(--team-shell-color);
+  margin: .5em;
+}
+
+main {
+  margin: 2em;
+}
+
+#header {
+  border-top: .125em dashed var(--team-header-color);
+  border-left: .125em dashed var(--team-header-color);
+  border-right: .125em dashed var(--team-header-color);
+}
+#catalogue {
+  overflow-y: scroll;
+  flex: 0.5;
+  border-top: .125em dashed var(--team-catalogue-color);
+  border-left: .125em dashed var(--team-catalogue-color);
+  border-right: .125em dashed var(--team-catalogue-color);
+}
+#basket {
+  flex: 0.5;
+  border-top: .125em dashed var(--team-basket-color);
+  border-left: .125em dashed var(--team-basket-color);
+  border-right: .125em dashed var(--team-basket-color);
+}
+
+.shell {
+  padding: 1em;
+  border-radius: 1em;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+main > section {
+  display: flex;
+  gap: 2em;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+a {
+  font-weight: 500;
+  color: #646cff;
+  text-decoration: inherit;
+}
+a:hover {
+  color: #535bf2;
+}
+
+body {
+  margin: 0;
+}
+
+h1 {
+  font-size: 3.2em;
+  line-height: 1.1;
+}
+
