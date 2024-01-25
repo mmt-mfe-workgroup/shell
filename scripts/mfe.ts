@@ -4,7 +4,7 @@ export default () => federation({
     remotes: {
         header: "https://unnatural-slope.surge.sh/assets/remoteEntry.js",
         catalogue: "https://true-robin.surge.sh/assets/remoteEntry.js",
-        basket: "https://seemly-temper.surge.sh/assets/remoteEntry.js",
+        basket: "https://unused-example.surge.sh/assets/remoteEntry.js",
     },
     shared: []
 })
