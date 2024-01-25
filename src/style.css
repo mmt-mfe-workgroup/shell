@@ -54,6 +54,9 @@ main {
   border-right: .25em dashed var(--team-align-color);
 }
 #basket {
+  height: 100%;
+  position: sticky;
+  top: .5em;
   flex: 0.5;
   border-top: .25em dashed var(--team-align-color);
   border-left: .25em dashed var(--team-align-color);
