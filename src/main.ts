@@ -18,14 +18,13 @@ header().then(fe => {
   const [subscription, targetEvent, ready] = __MFE_SYNC__.subscribe('header', () => console.log('sync please'))
   window.addEventListener(subscription, (e) => console.log("can sync this..", e))
   // ready()
-  console.log(targetEvent)
-  setTimeout(() => {
-    const syncState = new CustomEvent(targetEvent, {
-      detail: { show: true},
-    });
-    console.log(syncState)
-    window.dispatchEvent(syncState)
-  }, 500)
+  // setTimeout(() => {
+  //   const syncState = new CustomEvent(targetEvent, {
+  //     detail: { show: true},
+  //   });
+  //   console.log(syncState)
+  //   window.dispatchEvent(syncState)
+  // }, 500)
 }).catch(() => console.log("issue with loading header"))
 catalogue().then(app => app.default("catalogue")).catch((e) => console.log("issue with loading catalogue", e))
 basket().then(fe => fe.default("basket")).catch(() => console.log("issue with loading basket"))
