@@ -1,21 +1,20 @@
-
-
 # MMT MFE Shell page
 
+**Current CDN Distribution:** [condemned-muscle.surge.sh](https://condemned-muscle.surge.sh)
+
 ![overview](./overview.jpg)
+
 ## Remote Application repos
 
-`npm create vite@latest` 
+`npm create vite@latest`
 
-* header https://github.com/mmt-mfe-workgroup/header/tree/master
-* catalogue https://github.com/mmt-mfe-workgroup/catalogue/tree/master
-* basket https://github.com/mmt-mfe-workgroup/catalogue/tree/master
+- header https://github.com/mmt-mfe-workgroup/header/tree/master
+- catalogue https://github.com/mmt-mfe-workgroup/catalogue/tree/master
+- basket https://github.com/mmt-mfe-workgroup/catalogue/tree/master
 
 :bulb: We will need to align exposing App import statements and any load procedures.
 
-:bulb: Is the remote application **mounted** by the *shell* or it is **imported** as a shared remote resource? => we need a way to define its Federated module ***type***
-
-
+:bulb: Is the remote application **mounted** by the _shell_ or it is **imported** as a shared remote resource? => we need a way to define its Federated module **_type_**
 
 ## MFE Shared configs
 
@@ -51,8 +50,6 @@ npm install @originjs/vite-plugin-federation surge --save-dev
 
 :bomb:
 
-
-
 ## Federated modules: remotes | exposures
 
 Ensure you have a `vite.config.js`
@@ -65,7 +62,7 @@ const fm = () => federation({
 				'Header': `https://${CDN_LOCATION}/assets/remoteEntry.js`
 		},
 		exposes: {
-        './Button': './src/components/Button', // !important 
+        './Button': './src/components/Button', // !important
     },
     shared: ['react']
 })
@@ -78,8 +75,6 @@ export default defineConfig({
 })
 ```
 
-
-
 ## Shell import Apps which Mount with ReactDom
 
 ```
@@ -90,11 +85,9 @@ basket()
 	.catch(console.log)
 ```
 
-
-
 ## Remote Import Apps which are consumed by Framework runtime
 
-*n.b React framework*
+_n.b React framework_
 
 ```
 import { lazy, Suspense } from 'react';
@@ -104,4 +97,3 @@ const RemoteButton = lazy(() => import('UI/Button'));
 	<RemoteButton label='Apply voucher' onClick={() => console.log('applying voucher...')} />
 </Suspense>
 ```
-
