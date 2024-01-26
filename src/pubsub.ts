@@ -47,7 +47,8 @@ export class ModuleSync {
     }
     checkForBroadcast() {
         // const canBroadcast = this.modules.filter(module => module.state === 'MOUNTED').length === this.modules.length
-        window.dispatchEvent(this.custom)
+        const store = JSON.parse(localStorage.getItem(STORAGE))
+        window.dispatchEvent(new CustomEvent(SYNC_OUT_EVENT, {detail: { ...store }}))
     }
     setupReaction(eventName) {
         const [{ name }] = this.modules.filter(module => {

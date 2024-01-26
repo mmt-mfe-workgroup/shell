@@ -15,9 +15,13 @@ document.querySelector<HTMLDivElement>('#title')!.innerHTML = `
 `
 header().then(fe => {
   fe.default(document.getElementById("header"))
-  const [subscription, targetEvent, ready] = __MFE_SYNC__.subscribe('header', () => console.log('sync please'))
+  // pass into FM to register module ^^
+  const [subscription, targetEvent, ready] = __MFE_SYNC__.subscribe('header')
+  // inside FM listen to sync refresh event
   window.addEventListener(subscription, (e) => console.log("can sync this..", e))
-  // ready()
+  // let other federated apps know it's go time
+  ready()
+  // example save new state
   // setTimeout(() => {
   //   const syncState = new CustomEvent(targetEvent, {
   //     detail: { show: true},
@@ -26,5 +30,5 @@ header().then(fe => {
   //   window.dispatchEvent(syncState)
   // }, 500)
 }).catch(() => console.log("issue with loading header"))
-catalogue().then(app => app.default("catalogue")).catch((e) => console.log("issue with loading catalogue", e))
+catalogue().then(app => app.default("catalogue")).catch(() => console.log("issue with loading catalogue"))
 basket().then(fe => fe.default("basket")).catch(() => console.log("issue with loading basket"))
