@@ -54,7 +54,8 @@ main {
   border-right: .25em dashed var(--team-align-color);
 }
 #basket {
-  height: 100%;
+  height: 100vh;
+  overflow-y: scroll;
   position: sticky;
   top: .5em;
   flex: 0.5;
