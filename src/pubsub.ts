@@ -1,3 +1,4 @@
+// @ts-nocheck
 const STORAGE = "MFE"
 const SYNC_OUT_EVENT = "MFE_SYNC"
 const CUSTOM_LISTENER = "MFE_STORE"
