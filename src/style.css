@@ -46,6 +46,11 @@ main {
   border-left: .25em dashed var(--team-align-color);
   border-right: .25em dashed var(--team-align-color);
 }
+#checkout {
+  border-top: .25em dashed var(--team-align-color);
+  border-left: .25em dashed var(--team-align-color);
+  border-right: .25em dashed var(--team-align-color);
+}
 #catalogue {
   overflow-y: scroll;
   flex: 0.5;
@@ -54,7 +59,7 @@ main {
   border-right: .25em dashed var(--team-align-color);
 }
 #basket {
-  height: 100vh;
+  height: 100%;
   overflow-y: scroll;
   position: sticky;
   top: .5em;
@@ -64,12 +69,20 @@ main {
   border-right: .25em dashed var(--team-align-color);
 }
 
+#accordion {
+  display: flex;
+  flex-direction: column;
+  flex: 0.5;
+}
+
 .shell {
   padding: 1em;
   border-radius: 1em;
   border-bottom-left-radius: 0;
   border-bottom-right-radius: 0;
 }
+
+
 
 main > section {
   display: flex;

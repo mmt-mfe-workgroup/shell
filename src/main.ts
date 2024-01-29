@@ -2,11 +2,12 @@
 import ModuleSync from './pubsub'
 import './style.css'
 
-window.__MFE_SYNC__ = new ModuleSync(['header', 'catalogue', 'basket'])
+window.__MFE_SYNC__ = new ModuleSync(['header', 'catalogue', 'basket', 'checkout'])
 
 const header:any = () => import("header/App");
 const catalogue:any = () => import("catalogue/App");
 const basket:any = () => import("basket/App");
+const checkout:any = () => import("checkout/App");
 
 document.querySelector<HTMLDivElement>('#title')!.innerHTML = `
   <div>
@@ -17,6 +18,7 @@ header().then(fe => {
   fe.default(document.getElementById("header"))
   // pass into FM to register module ^^
   const [subscription, targetEvent, ready] = __MFE_SYNC__.subscribe('header')
+  console.log(subscription, targetEvent, ready)
   // inside FM listen to sync refresh event
   window.addEventListener(subscription, (e) => console.log("can sync this..", e))
   // let other federated apps know it's go time
@@ -27,8 +29,9 @@ header().then(fe => {
   //     detail: { show: true},
   //   });
   //   console.log(syncState)
-  //   window.dispatchEvent(syncState)
+    // window.dispatchEvent(syncState)
   // }, 500)
-}).catch(() => console.log("issue with loading header"))
+}).catch((e) => console.log("issue with loading header", e))
 catalogue().then(app => app.default("catalogue")).catch(() => console.log("issue with loading catalogue"))
-basket().then(fe => fe.default("basket")).catch(() => console.log("issue with loading basket"))
+basket().then(fe => fe.default("basket")).catch(() => console.log("issue with loading basket")) 
+checkout().then(fe => fe.default(document.getElementById("checkout"))).catch(() => console.log("issue with loading checkout"))
