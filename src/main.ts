@@ -4,7 +4,13 @@ import { federatedLoader } from './federated';
 import './style.css'
 
 // useless mounting
-document.querySelector<HTMLDivElement>('#title')!.innerHTML = `<div><h1>MMT MFE SHELL</h1></div>`
+document.querySelector<HTMLDivElement>('#title')!.innerHTML = `<div class="shell-header">
+  <h1>MMT MFE SHELL</h1>
+  <div class="flex items-center mb-4">
+    <input id="mfe-checkbox" type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+    <label for="mfe-checkbox" class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">MFE x-ray mode</label>
+  </div>
+</div>`
 
 const onLoadApps = ['header', 'catalogue', 'basket']
 
@@ -44,3 +50,10 @@ window.addEventListener('clearBasket', () => {
     bas?.classList.remove('flex-1')
   }
 })
+
+// setup x-ray event dispatcher
+const checkbox = document.getElementById('mfe-checkbox')
+checkbox?.addEventListener('change', ({ target }) => {
+  window.dispatchEvent(new CustomEvent('view:x-ray', { detail: target.checked }))
+})
+

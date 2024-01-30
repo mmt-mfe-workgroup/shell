@@ -23,10 +23,34 @@
 
 ### Event Interfaces
 
+**Dispatch**
+
+* `window`: `view:x-ray` : `boolean` => signal to put apps into #xray mode
+
 **Listeners**
 
 * `header`: `clearBasket` => hides **Checkout app** from page
 * `basket`: `goToCheckout` => loads **Checkout app** 
+
+
+
+
+
+### X-ray mode
+
+Show case the underlying data systems of our federated components as a visual layer
+
+Apps should listen to the `view:x-ray` event and consume `{ detail: boolean }`
+
+* HIDE standard UI
+* FILL will solid colours
+* Imply the follow data:
+  * CDN_LOCATION
+  * FRAMEWORK
+  * APP NAME AND VERSION
+  * SHARED RESOURCES
+  * EVENTS - DISPATCHED
+  * EVENTS - SUBSCRIBED
 
 
 
