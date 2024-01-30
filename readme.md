@@ -8,13 +8,27 @@
 
 `npm create vite@latest`
 
-- header https://github.com/mmt-mfe-workgroup/header/tree/master
-- catalogue https://github.com/mmt-mfe-workgroup/catalogue/tree/master
-- basket https://github.com/mmt-mfe-workgroup/catalogue/tree/master
+- **header** https://github.com/mmt-mfe-workgroup/header/tree/master
+- **catalogue** https://github.com/mmt-mfe-workgroup/catalogue/tree/master
+- **basket** https://github.com/mmt-mfe-workgroup/catalogue/tree/master
+- **checkout** https://github.com/mmt-mfe-workgroup/checkout/tree/master
+
+
 
 :bulb: We will need to align exposing App import statements and any load procedures.
 
 :bulb: Is the remote application **mounted** by the _shell_ or it is **imported** as a shared remote resource? => we need a way to define its Federated module **_type_**
+
+
+
+### Event Interfaces
+
+**Listeners**
+
+* `header`: `clearBasket` => hides **Checkout app** from page
+* `basket`: `goToCheckout` => loads **Checkout app** 
+
+
 
 ## MFE Shared configs
 
