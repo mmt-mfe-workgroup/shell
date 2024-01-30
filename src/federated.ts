@@ -4,7 +4,7 @@ import MODULE_DATA from './config'
 export function federatedLoader(key, callback) {
     const { app, element, props } = MODULE_DATA[key]
     app.then(module => {
-        module.default(element, {...props})
+        module.default(element, props)
         callback?.()
     }).catch((e) => console.log(`issue with loading ${key}`, e))
 }

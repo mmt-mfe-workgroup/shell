@@ -10,6 +10,14 @@ document.querySelector<HTMLDivElement>('#title')!.innerHTML = `<div class="shell
     <input id="mfe-checkbox" type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
     <label for="mfe-checkbox" class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">MFE x-ray mode</label>
   </div>
+  <code>
+  CDN_LOCATION = https://unnatural-slope.surge.sh/assets/remoteEntry.js
+  FRAMEWORK = REACT@18.2
+  APP NAME AND VERSION = SHELL
+  SHARED RESOURCES = N/A
+  EVENTS - DISPATCHED => "XRAY"
+  EVENTS - SUBSCRIBED => "addToBasket"
+  <code>
 </div>`
 
 const onLoadApps = ['header', 'catalogue', 'basket']
@@ -52,8 +60,15 @@ window.addEventListener('clearBasket', () => {
 })
 
 // setup x-ray event dispatcher
+const shell = document.getElementById('title')
 const checkbox = document.getElementById('mfe-checkbox')
 checkbox?.addEventListener('change', ({ target }) => {
+  console.log('view:x-ray', target.checked)
   window.dispatchEvent(new CustomEvent('view:x-ray', { detail: target.checked }))
+  if(target.checked) {
+    shell?.classList.add('x-ray')
+  } else {
+    shell?.classList.remove('x-ray')
+  }
 })
 

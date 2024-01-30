@@ -69,7 +69,19 @@ main {
   border-left: .25em dashed var(--team-align-color);
   border-right: .25em dashed var(--team-align-color);
 }
+.x-ray {
+  background-color: purple;
+}
 
+#title code {
+  display: none;
+}
+#title.x-ray code {
+  display: block;
+}
+#title.x-ray h1 {
+  display: none;
+}
 .hidden {
   display: none !important;
 }
