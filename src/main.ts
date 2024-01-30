@@ -1,40 +1,21 @@
 // @ts-nocheck
 import ModuleSync from './pubsub'
+import { federatedLoader } from './federated';
 import './style.css'
 
-window.__MFE_SYNC__ = new ModuleSync(['header', 'catalogue', 'basket'])
+// useless mounting
+document.querySelector<HTMLDivElement>('#title')!.innerHTML = `<div><h1>MMT MFE SHELL</h1></div>`
 
-const header:any = () => import("header/App");
-const catalogue:any = () => import("catalogue/App");
-const basket:any = () => import("basket/App");
-let checkout
+const onLoadApps = ['header', 'catalogue', 'basket']
 
-document.querySelector<HTMLDivElement>('#title')!.innerHTML = `
-  <div>
-    <h1>MMT MFE SHELL</h1>
-  </div>
-`
-header().then(fe => {
-  fe.default(document.getElementById("header"))
-  // pass into FM to register module ^^
-  const [subscription, targetEvent, ready] = __MFE_SYNC__.subscribe('header')
-  console.log(subscription, targetEvent, ready)
-  // inside FM listen to sync refresh event
-  window.addEventListener(subscription, (e) => console.log("can sync this..", e))
-  // let other federated apps know it's go time
-  ready()
-  // example save new state
-  // setTimeout(() => {
-  //   const syncState = new CustomEvent(targetEvent, {
-  //     detail: { show: true},
-  //   });
-  //   console.log(syncState)
-    // window.dispatchEvent(syncState)
-  // }, 500)
-}).catch((e) => console.log("issue with loading header", e))
-catalogue().then(app => app.default("catalogue")).catch(() => console.log("issue with loading catalogue"))
-basket().then(fe => fe.default("basket")).catch(() => console.log("issue with loading basket")) 
+// register FM's
+window.__MFE_SYNC__ = new ModuleSync(onLoadApps)
+// load Apps
+onLoadApps.forEach(app => federatedLoader(app))
 
+// verbose [event] handling for checkout init
+
+// switch view to basket|checkout
 window.addEventListener('goToCheckout', () => {
   const tgt = document.getElementById("checkout")
   const cat = document.getElementById("accordion")
@@ -44,15 +25,14 @@ window.addEventListener('goToCheckout', () => {
   cat?.classList.add('hidden')
   bas?.classList.add('flex-1')
   if(tgt?.classList.contains('init')) {
-    checkout = () => import("checkout/App");
-    checkout().then(fe => {
-      fe.default(tgt)
+    federatedLoader('checkout', () => {
       window.__MFE_SYNC__.register('checkout')
       tgt?.classList.remove('init')
-    }).catch((e) => console.log("issue with loading checkout", e))
+    })
   }
 })
 
+// will revert view back to catalogue|basket
 window.addEventListener('clearBasket', () => {
   const tgt = document.getElementById("checkout")
   if(tgt?.classList.contains('flex-1')) {
