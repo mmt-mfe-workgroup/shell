@@ -4,7 +4,7 @@
   "version": "0.0.0",
   "type": "module",
   "config": {
-    "cdn": "condemned-muscle.surge.sh"
+    "cdn": "mmt-mfe-shell.netlify.app"
   },
   "scripts": {
     "dev": "vite",
