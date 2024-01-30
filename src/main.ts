@@ -2,7 +2,7 @@
 import ModuleSync from './pubsub'
 import './style.css'
 
-window.__MFE_SYNC__ = new ModuleSync(['header', 'catalogue', 'basket', 'checkout'])
+window.__MFE_SYNC__ = new ModuleSync(['header', 'catalogue', 'basket'])
 
 const header:any = () => import("header/App");
 const catalogue:any = () => import("catalogue/App");
@@ -43,6 +43,24 @@ window.addEventListener('goToCheckout', () => {
   tgt?.classList.add('flex-1')
   cat?.classList.add('hidden')
   bas?.classList.add('flex-1')
-  checkout = () => import("checkout/App");
-  checkout().then(fe => fe.default(tgt)).catch((e) => console.log("issue with loading checkout", e))
+  if(tgt?.classList.contains('init')) {
+    checkout = () => import("checkout/App");
+    checkout().then(fe => {
+      fe.default(tgt)
+      window.__MFE_SYNC__.register('checkout')
+      tgt?.classList.remove('init')
+    }).catch((e) => console.log("issue with loading checkout", e))
+  }
+})
+
+window.addEventListener('clearBasket', () => {
+  const tgt = document.getElementById("checkout")
+  if(tgt?.classList.contains('flex-1')) {
+    const cat = document.getElementById("accordion")
+    const bas = document.getElementById("basket")
+    tgt?.classList.add('hidden')
+    tgt?.classList.remove('flex-1')
+    cat?.classList.remove('hidden')
+    bas?.classList.remove('flex-1')
+  }
 })
