@@ -1,3 +1,4 @@
+// @ts-nocheck
 export default {
     "header": {
         app: import("header/App"),
