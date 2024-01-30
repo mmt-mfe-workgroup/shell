@@ -59,6 +59,7 @@ main {
   border-right: .25em dashed var(--team-align-color);
 }
 #basket {
+  transition: flex 0.3s;
   height: 100%;
   overflow-y: scroll;
   position: sticky;
@@ -67,6 +68,13 @@ main {
   border-top: .25em dashed var(--team-align-color);
   border-left: .25em dashed var(--team-align-color);
   border-right: .25em dashed var(--team-align-color);
+}
+
+.hidden {
+  display: none !important;
+}
+.flex-1 {
+  flex: 1 !important;
 }
 
 #accordion {

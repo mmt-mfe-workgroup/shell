@@ -7,7 +7,7 @@ window.__MFE_SYNC__ = new ModuleSync(['header', 'catalogue', 'basket', 'checkout
 const header:any = () => import("header/App");
 const catalogue:any = () => import("catalogue/App");
 const basket:any = () => import("basket/App");
-const checkout:any = () => import("checkout/App");
+let checkout
 
 document.querySelector<HTMLDivElement>('#title')!.innerHTML = `
   <div>
@@ -34,4 +34,15 @@ header().then(fe => {
 }).catch((e) => console.log("issue with loading header", e))
 catalogue().then(app => app.default("catalogue")).catch(() => console.log("issue with loading catalogue"))
 basket().then(fe => fe.default("basket")).catch(() => console.log("issue with loading basket")) 
-checkout().then(fe => fe.default(document.getElementById("checkout"))).catch(() => console.log("issue with loading checkout"))
+
+window.addEventListener('goToCheckout', () => {
+  const tgt = document.getElementById("checkout")
+  const cat = document.getElementById("accordion")
+  const bas = document.getElementById("basket")
+  tgt?.classList.remove('hidden')
+  tgt?.classList.add('flex-1')
+  cat?.classList.add('hidden')
+  bas?.classList.add('flex-1')
+  checkout = () => import("checkout/App");
+  checkout().then(fe => fe.default(tgt)).catch((e) => console.log("issue with loading checkout", e))
+})
