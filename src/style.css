@@ -30,35 +30,34 @@ body {
   overflow-x: hidden;
 }
 
-#title {
-  border-top: .25em dashed var(--team-align-color);
-  border-left: .25em dashed var(--team-align-color);
-  border-right: .25em dashed var(--team-align-color);
-  margin: .5em;
-}
-
 main {
   margin: 2em;
 }
-
-#header {
+#shell-container {
+  border: .25em dashed var(--team-align-color);
+  padding: 4em;
+  border-radius: 1em;
+}
+#header-container {
   border-top: .25em dashed var(--team-align-color);
   border-left: .25em dashed var(--team-align-color);
   border-right: .25em dashed var(--team-align-color);
 }
 #checkout {
+  transition: flex 0.3s;
   border-top: .25em dashed var(--team-align-color);
   border-left: .25em dashed var(--team-align-color);
   border-right: .25em dashed var(--team-align-color);
 }
-#catalogue {
-  overflow-y: scroll;
+
+#catalogue-container {
+  transition: flex 0.3s;
   flex: 0.5;
   border-top: .25em dashed var(--team-align-color);
   border-left: .25em dashed var(--team-align-color);
   border-right: .25em dashed var(--team-align-color);
 }
-#basket {
+#basket-container {
   transition: flex 0.3s;
   height: 100%;
   overflow-y: scroll;
@@ -69,17 +68,36 @@ main {
   border-left: .25em dashed var(--team-align-color);
   border-right: .25em dashed var(--team-align-color);
 }
+
 .x-ray {
   background-color: purple;
+  padding: 4em !important;
 }
-
+code {
+  padding: 1em;
+  background-color: rgba(255,255,255,.125);
+  line-height: 2em;
+}
 #title code {
   display: none;
 }
-#title.x-ray code {
+.x-ray #title {
+  color: #fcfcfc;
+}
+.x-ray #title code {
   display: block;
 }
-#title.x-ray h1 {
+.x-ray #title label{
+  color: #fcfcfc !important;
+}
+.tag {
+  padding: .25em 1em;
+  background-color: rgba(255,255,255,.125);
+  border: .05em solid pink;
+  border-radius: .5em;
+  margin-bottom: .5em;
+}
+.x-ray .ui {
   display: none;
 }
 .hidden {
@@ -88,14 +106,49 @@ main {
 .flex-1 {
   flex: 1 !important;
 }
-
-#accordion {
-  display: flex;
-  flex-direction: column;
-  flex: 0.5;
+.code {
+  display: none;
+  font-family: ui-monospace, SFMono-Regular, Menlo;
+  padding: 1em;
+  background-color: rgba(255,255,255,.125);
+}
+.x-ray .code{
+  display: block;  
 }
 
+.bg-indigo {
+  background-color: indigo !important;
+}
+.bg-blue {
+  background-color: #646cff !important;
+}
+.bg-green {
+  background-color: darkgreen !important;
+}
+.bg-orange {
+  background-color: crimson !important;
+}
+
+.mfe-blue {
+  background-color: blue;
+}
+.mfe-brown {
+  background-color: brown;
+}
+.mfe-yellow {
+  background-color: goldenrod;
+}
+.mfe-green {
+  background-color: forestgreen;
+}
+.mfe-purple {
+  background-color: purple;
+}
+.mfe-pink {
+  background-color: hotpink;
+}
 .shell {
+  transition: background-color .3s;
   padding: 1em;
   border-radius: 1em;
   border-bottom-left-radius: 0;
@@ -104,7 +157,7 @@ main {
 
 
 
-main > section {
+#shell-container > section {
   display: flex;
   gap: 2em;
   justify-content: center;
