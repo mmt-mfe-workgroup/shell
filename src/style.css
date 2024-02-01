@@ -107,7 +107,7 @@ code {
   flex: 1 !important;
 }
 .code {
-  display: none;
+  display: none !important;
   font-family: ui-monospace, SFMono-Regular, Menlo;
   padding: 1em;
   background-color: rgba(255,255,255,.125);
