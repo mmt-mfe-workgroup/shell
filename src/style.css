@@ -59,7 +59,7 @@ main {
 }
 #basket-container {
   transition: flex 0.3s;
-  height: 100%;
+  height: 100vh;
   overflow-y: scroll;
   position: sticky;
   top: .5em;

@@ -40,9 +40,9 @@ window.addEventListener('goToCheckout', () => {
   const header = document.getElementById('header-container')
   const checkout = document.getElementById('checkout')
   const checkbox = document.getElementById('mfe-checkbox')
-  checkbox?.addEventListener('change', ({ target }) => {
-    window.dispatchEvent(new CustomEvent('view:x-ray', { detail: target.checked }))
-    if(target.checked) {
+  checkbox?.addEventListener('change', ({ target }: Event) => {
+    window.dispatchEvent(new CustomEvent('view:x-ray', { detail: target?.checked }))
+    if(target?.checked) {
       shell?.classList.add('x-ray')
       basket?.classList.add('x-ray','bg-blue')
       catalogue?.classList.add('x-ray','bg-green')
