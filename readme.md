@@ -1,12 +1,12 @@
 # MMT MFE Shell page
 
-**Current CDN Distribution:** [condemned-muscle.surge.sh](https://condemned-muscle.surge.sh)
+Distributions are built using `npm create vite@latest`
+
+**Current CDN Distribution:** [mmt-mfe-shell](https://mmt-mfe-shell.netlify.app)
 
 ![overview](./overview.jpg)
 
 ## Remote Application repos
-
-`npm create vite@latest`
 
 - **header** https://github.com/mmt-mfe-workgroup/header/tree/master
 - **catalogue** https://github.com/mmt-mfe-workgroup/catalogue/tree/master
@@ -19,9 +19,60 @@
 
 :bulb: Is the remote application **mounted** by the _shell_ or it is **imported** as a shared remote resource? => we need a way to define its Federated module **_type_**
 
+### Federated loader config
+
+The Federated apps will mount onto the Shell DOM, using the custom `federatedLoader`, where they can passed their mountpoints and any props required for their runtime.
 
 
-### Event Interfaces
+```
+{
+    "header": {
+        app: import("header/App"),
+        element: document.getElementById("header"),
+        props: {
+            label: "Distributed Teams Showcase"
+        }
+    },
+    "basket": {
+        app: import("basket/App"),
+        element: "basket",
+        props: {}
+    },
+    "catalogue": {
+        app: import("catalogue/App"),
+        element: "catalogue",
+        props: {}
+    },
+    "checkout": {
+        app: import("checkout/App"),
+        element: document.getElementById("checkout"),
+        props: {}
+    },
+}
+```
+
+This will be consumed once the main script has loaded and the page is ready.
+
+Each Remote App has config keys which can be consumed as follows:
+```
+import { federatedLoader } from './federated';
+
+const onLoadApps = ['header', 'catalogue', 'basket'];
+onLoadApps.forEach(app => federatedLoader(app));
+```
+
+An app can be consumed at any time, depending on requirements - useful for loading in part of the service after the initial page load.
+```
+federatedLoader('checkout')
+```
+
+
+
+---
+
+### Shell Event Interfaces
+
+CustomEvents used by the Shell application, in order for cross app communication.
 
 **Dispatch**
 
@@ -32,9 +83,7 @@
 * `header`: `clearBasket` => hides **Checkout app** from page
 * `basket`: `goToCheckout` => loads **Checkout app** 
 
-
-
-
+---
 
 ### X-ray mode
 
@@ -63,9 +112,6 @@ Ensure other apps share these commonalities in their respective `package.json`
  "config": {
     "cdn": "CDN_LOCATION"
  },
-"scripts": {
-    "deploy": "npm run build && cd dist && echo '*' > CORS && echo $npm_package_config_cdn | pbcopy && npx surge && cd .."
- },
 "devDependencies": {
     "@originjs/vite-plugin-federation": "^1.3.4",
     "surge": "^0.23.1",
@@ -76,7 +122,7 @@ Ensure other apps share these commonalities in their respective `package.json`
 npm install @originjs/vite-plugin-federation surge --save-dev
 ```
 
-### Deployment (for all Apps)
+### Deployment (for all Apps) `deprecated`
 
 `npm run deploy`
 
@@ -86,7 +132,7 @@ npm install @originjs/vite-plugin-federation surge --save-dev
 4. **surge** asks to confirm build location
 5. **surge** asks for CDN location => clear then paste :wink:
 
-:bomb:
+:bomb: (we have moved on to use netflify)
 
 ## Federated modules: remotes | exposures
 
@@ -113,7 +159,11 @@ export default defineConfig({
 })
 ```
 
-## Shell import Apps which Mount with ReactDom
+
+
+## App consumption
+
+### Shell import Apps which Mount with ReactDom
 
 ```
 const basket:any = () => import("basket/App"); // lazy
@@ -123,7 +173,9 @@ basket()
 	.catch(console.log)
 ```
 
-## Remote Import Apps which are consumed by Framework runtime
+
+
+### Remote Import Apps which are consumed by Framework runtime
 
 _n.b React framework_
 

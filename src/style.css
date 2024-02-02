@@ -173,7 +173,7 @@ h1 {
   color: black;
   text-align: center;
   font-weight: bold;
-  font-size: 2.7em;
+  font-size: 2.7em !important;
   line-height: 1.1;
 }
 

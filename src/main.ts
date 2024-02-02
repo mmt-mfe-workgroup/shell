@@ -23,7 +23,7 @@ document.querySelector<HTMLDivElement>('#title')!.innerHTML = `
 <code>
 APP: <span class="tag">mfe-shell@0.0.1</span>
 <br>
-CDN_LOCATION: <span class="tag">unnatural-slope.surge.sh/assets/remoteEntry.js</span>
+CDN_LOCATION: <span class="tag">mmt-mfe-shell.netlify.app</span>
 <br>
 FRAMEWORK: <span class="tag">Vanila JS</span>
 <br>
