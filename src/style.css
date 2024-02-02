@@ -39,23 +39,17 @@ main {
   border-radius: 1em;
 }
 #header-container {
-  border-top: .25em dashed var(--team-align-color);
-  border-left: .25em dashed var(--team-align-color);
-  border-right: .25em dashed var(--team-align-color);
+  border: .25em dashed var(--team-align-color);
 }
 #checkout {
   transition: flex 0.3s;
-  border-top: .25em dashed var(--team-align-color);
-  border-left: .25em dashed var(--team-align-color);
-  border-right: .25em dashed var(--team-align-color);
+  border: .25em dashed var(--team-align-color);
 }
 
 #catalogue-container {
   transition: flex 0.3s;
   flex: 0.5;
-  border-top: .25em dashed var(--team-align-color);
-  border-left: .25em dashed var(--team-align-color);
-  border-right: .25em dashed var(--team-align-color);
+  border: .25em dashed var(--team-align-color);
 }
 #basket-container {
   transition: flex 0.3s;
@@ -64,9 +58,7 @@ main {
   position: sticky;
   top: .5em;
   flex: 0.5;
-  border-top: .25em dashed var(--team-align-color);
-  border-left: .25em dashed var(--team-align-color);
-  border-right: .25em dashed var(--team-align-color);
+  border: .25em dashed var(--team-align-color);
 }
 
 .x-ray {
