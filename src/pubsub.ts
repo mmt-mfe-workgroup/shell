@@ -35,7 +35,7 @@ export class ModuleSync {
     subscribe(name:string, callback: () => void) {
         let SYNC_IN_EVENT
         this.modules = this.modules.map(module => {
-            if(name === module.name) {
+            if(name === module.name) {  
                 module.state = "MOUNTED"
                 module.callback = callback
                 SYNC_IN_EVENT = module.store
@@ -44,12 +44,14 @@ export class ModuleSync {
             return module
         })
         
-        return [SYNC_OUT_EVENT, SYNC_IN_EVENT, this.checkForBroadcast]
+        return { listener: SYNC_OUT_EVENT, dispatcher: SYNC_IN_EVENT, ready: this.checkForBroadcast }
     }
-    checkForBroadcast() {
+    checkForBroadcast(from) {
+        console.log(from)
         // const canBroadcast = this.modules.filter(module => module.state === 'MOUNTED').length === this.modules.length
         const store = JSON.parse(localStorage.getItem(STORAGE))
-        window.dispatchEvent(new CustomEvent(SYNC_OUT_EVENT, {detail: { ...store }}))
+        const event = new CustomEvent(SYNC_OUT_EVENT, { detail: { ...store } })
+        window.dispatchEvent(event)
     }
     setupReaction(eventName) {
         const [{ name }] = this.modules.filter(module => {
@@ -65,6 +67,16 @@ export class ModuleSync {
     }
     clearStore() {
         localStorage.clear()
+    }
+    targetStorage(app, payload) {
+        const store = localStorage.getItem(STORAGE) || "{}"
+        const update = JSON.parse(store)
+        
+        if(app === 'basket') {
+            update[app] = !update[app] ? [] : update[app]
+            update[app] = [...update[app], payload]
+            localStorage.setItem(STORAGE, JSON.stringify(update))
+        }
     }
 }
 

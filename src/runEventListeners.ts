@@ -3,6 +3,10 @@ import { federatedLoader } from './federated';
 export default function() {
     // verbose [event] handling for checkout init
 
+window.addEventListener('addToBasket', ({ detail }) => {
+    __MFE_SYNC__.targetStorage('basket', detail.product)
+})
+
 // switch view to basket|checkout
 window.addEventListener('goToCheckout', () => {
     const tgt = document.getElementById("checkout")
@@ -13,15 +17,14 @@ window.addEventListener('goToCheckout', () => {
     cat?.classList.add('hidden')
     bas?.classList.add('flex-1')
     if(tgt?.classList.contains('init')) {
-      federatedLoader('checkout', () => {
-        window.__MFE_SYNC__.register('checkout')
-        tgt?.classList.remove('init')
-      })
+        __MFE_SYNC__.register('checkout')
+        federatedLoader('checkout', () => tgt?.classList.remove('init'))
     }
   })
   
   // will revert view back to catalogue|basket
   window.addEventListener('clearBasket', () => {
+    __MFE_SYNC__.clearStore()
     const tgt = document.getElementById("checkout")
     if(tgt?.classList.contains('flex-1')) {
       const cat = document.getElementById("catalogue-container")
