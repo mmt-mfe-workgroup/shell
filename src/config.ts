@@ -4,7 +4,7 @@ export default {
         app: import("header/App"),
         element: document.getElementById("header"),
         props: {
-            label: "MMT Winter Sale"
+            label: "Distributed Teams Showcase"
         }
     },
     "basket": {
