@@ -14,7 +14,7 @@ onLoadApps.forEach(app => federatedLoader(app))
 // useless mounting
 document.querySelector<HTMLDivElement>('#title')!.innerHTML = `
 <div class="ui">
-  <h1>MMT MFE SHELL</h1>
+  <h1>MFE Shell Application</h1>
 </div>
 <div class="flex items-center mb-4">
     <input id="mfe-checkbox" type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-900 rounded focus:ring-blue-500 focus:ring-2">
