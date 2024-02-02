@@ -186,5 +186,6 @@ h1 {
   }
   .x-ray {
     padding: 1em !important;
+    width: 100%
   }
 }
