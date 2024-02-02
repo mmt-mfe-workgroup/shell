@@ -39,7 +39,9 @@ main {
   border-radius: 1em;
 }
 #header-container {
-  border: .25em dashed var(--team-align-color);
+  border-top: .25em dashed var(--team-align-color);
+  border-left: .25em dashed var(--team-align-color);
+  border-right: .25em dashed var(--team-align-color);
 }
 #checkout {
   transition: flex 0.3s;
@@ -143,8 +145,6 @@ code {
   transition: background-color .3s;
   padding: 1em;
   border-radius: 1em;
-  border-bottom-left-radius: 0;
-  border-bottom-right-radius: 0;
 }
 
 
