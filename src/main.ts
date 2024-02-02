@@ -25,7 +25,7 @@ APP: <span class="tag">mfe-shell@0.0.1</span>
 <br>
 CDN_LOCATION: <span class="tag">unnatural-slope.surge.sh/assets/remoteEntry.js</span>
 <br>
-FRAMEWORK: <span class="tag">React@18.2</span>
+FRAMEWORK: <span class="tag">Vanila JS</span>
 <br>
 SHARED_RESOURCES: <span class="tag">N/A</span>
 <br>
